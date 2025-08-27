@@ -1,4 +1,4 @@
-let heart = document.querySelectorAll(".card .fa-heart");
+let heart = document.querySelectorAll(".card .heart-icon");
 let callBtn = document.querySelectorAll(".card .call-btn");
 let copyBtn = document.querySelectorAll(".card .copy-btn");
 let callHistoryContainer = document.getElementById("call-history");
@@ -51,7 +51,9 @@ function call(e) {
   let serviceName = card.querySelector(".service-name").innerText;
 
   if (20 > coinCounted) {
-    alert("NO sufficiant balance");
+    alert(
+      "❌ You do not have sufficiant balance. you need minimum 20 coin for each call"
+    );
     return;
   }
   alert(`📞 Calling ${serviceName} ${serviceNumber}...`);
