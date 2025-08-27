@@ -6,7 +6,27 @@ let clearCallHistoryBtn = document.getElementById("clear-call-history-btn");
 
 let heartCounted = 0;
 let coinCounted = 100;
+let copyCounted = 0;
 let callHistory = [];
+
+// Copy Button Functionality
+function copyNumber(e) {
+  let copyCount = document.getElementById("copy-count");
+  copyCounted++;
+  copyCount.innerText = copyCounted;
+  // copy the number
+  let target = e.target;
+  let card = target.closest(".card");
+  let serviceNumber = card.querySelector("#service-number").innerText;
+
+  navigator.clipboard.writeText(serviceNumber);
+  alert(`Number Copied : ${serviceNumber}`);
+}
+
+copyBtn.forEach((item) => {
+  item.addEventListener("click", copyNumber);
+});
+
 // Clear History
 function clearHistory() {
   callHistory.length = 0;
