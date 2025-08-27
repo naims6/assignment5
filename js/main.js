@@ -1,9 +1,45 @@
 let heart = document.querySelectorAll(".card .fa-heart");
 let callBtn = document.querySelectorAll(".card .call-btn");
 let copyBtn = document.querySelectorAll(".card .copy-btn");
+let callHistoryContainer = document.getElementById("call-history");
+let clearCallHistoryBtn = document.getElementById("clear-call-history-btn");
 
 let heartCounted = 0;
 let coinCounted = 100;
+let callHistory = [];
+// Clear History
+function clearHistory() {
+  callHistory.length = 0;
+  callHistoryContainer.innerHTML = "";
+}
+
+clearCallHistoryBtn.addEventListener("click", clearHistory);
+
+// Creating History for every call
+function createHistory(number, name) {
+  let currentTime = new Date().toLocaleTimeString();
+  let history = {
+    number,
+    name,
+    currentTime,
+  };
+  callHistory.unshift(history);
+
+  callHistoryContainer.innerHTML = "";
+  callHistory.forEach((item) => {
+    callHistoryContainer.innerHTML += ` <div
+              class="flex justify-between items-center bg-[#f5f5f5] py-4 px-3 rounded-lg"
+            >
+              <div>
+                <h2 id="history-name" class="font-bold">
+                  ${item.name}
+                </h2>
+                <p id="history-number" class="text-gray-600">${item.number}</p>
+              </div>
+              <h1 id="history-time">${item.currentTime}</h1>
+            </div>`;
+  });
+}
 
 // Call Button Functionality
 function call(e) {
@@ -14,11 +50,16 @@ function call(e) {
   let serviceNumber = card.querySelector("#service-number").innerText;
   let serviceName = card.querySelector(".service-name").innerText;
 
+  if (20 > coinCounted) {
+    alert("NO sufficiant balance");
+    return;
+  }
   alert(`📞 Calling ${serviceName} ${serviceNumber}...`);
 
-  if (20 > coinCounted) return;
   coinCounted -= 20;
   coinCount.innerText = coinCounted;
+
+  createHistory(serviceNumber, serviceName);
 }
 
 callBtn.forEach((item) => {
