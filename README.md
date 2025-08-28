@@ -1,16 +1,16 @@
 ## 1. What is the difference between getElementById, getElementsByClassName, and querySelector / querySelectorAll?
 
 Answer : The getElementById returns a single element not html collection
-and The getElementByClassName returns us a html collection of all elements and it is a live collection also that's the different with querySelectorAll method.querySelectorAll Return a static html collection.which one is not update automatically when dom changes.
-and the another one is querySelector. querySelector return a single element which one is matched with first css selector
+and The getElementByClassName returns us a html collection of all elements and it is a live collection also. that's the different with querySelectorAll method.querySelectorAll Return a static html collection.which one is not update automatically when dom changes.
+and the another one is querySelector. querySelector return a single element which one is matched with first css selector.
 
 ## 2. How do you create and insert a new element into the DOM?
 
-Answer : For creating and insert a new element in into the DOM. I first use document.createElement() for create the element in to the memory. then i use appendChild method to insert it into the document.
+Answer : For creating and insert a new element in into the DOM. I first use document.createElement() for create the element in to the memory. then i use appendChild() method to insert it into the document.
 
 ## 3. What is Event Bubbling and how does it work?
 
-Answer : Event bubbling is the process in the DOM is An event starts from clild to it's parent like bubble up. let's give you an example - i have a div and it has a child.when i click in child element then event will be it's parent also. at first it will fire where i cliked then it's parent.if div have any parent and event then div's parent event also fired. like - button > div > body.
+Answer : Event bubbling is the process in the DOM is An event starts from clild to it's parent like bubble up. let's give you an example - I have a div and it has a child.when i click in child element then event will be fired it's parent also. at first it will fire where i cliked then it's parent.if div have any parent and event then div's parent event also fired. like - button > div > body.
 
 ## 4. What is Event Delegation in JavaScript? Why is it useful?
 
